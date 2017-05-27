@@ -55,8 +55,6 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-<img src="./images/sanity-check-take-4.gif?raw=true">
-
 ![alt text][image1]
 
 ###Design and Test a Model Architecture
