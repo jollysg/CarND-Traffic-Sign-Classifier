@@ -25,6 +25,11 @@ The goals / steps of this project are the following:
 [image4]: ./resources/augmentedDatasetVisualization.png "Augmented dataset"
 [image5]: ./resources/trafficSignsFromWeb.png "Traffic Signs from web for testing"
 [image6]: ./resources/predictedTrafficSigns.png "Predictions for the traffic signs"
+[image7]: ./web_images_challenging/unprocessed/No_passing.png "No passing"
+[image8]: ./web_images_challenging/unprocessed/rightofway.png "Right of way"
+[image9]: ./web_images_challenging/unprocessed/german-road-sign-children-crossing.png "Children crossing"
+[image10]: ./web_images_challenging/unprocessed/stop.png "Stop"
+[image11]: ./web_images_challenging/unprocessed/80kmhspeedlimit.png "80 Kmph speed limit"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -122,39 +127,39 @@ My final model results were:
 ####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Following are the five German traffic signs that I found on the web. 
-![alt text][image5]
 
-![alt text][image6]
+![alt text][image7] ![alt text][image8] ![alt text][image9] 
+![alt text][image10] ![alt text][image11]
 
+The challenging images in these are Children crossing (since the sign is partly covered by snow), stop sign (the image is a little blurred) and 80kmph speed limit sign (the image is from an acute perspective)
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-The images were resized to 32 x 32 in an external image editor, further the unnecessary regions of the images were cropped out. An accuracy of 80% was achieved with this. Here are the results of the prediction:
+The images were resized to 32 x 32 in an external image editor, further the unnecessary regions of the images were cropped out. Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 70 km/h 	    		| 30 km/h   									| 
-| Right of way     		| Right of way 									|
 | No passing			| No passing 									|
+| Right of way     		| Right of way 									|
 | Children crossing     | Children crossing				 				|
 | Stop					| Stop			      							|
+| 80 km/h 	    		| 60 km/h   									| 
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%.
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This when compared to the test set accuracy of 93% seems less, however for a true comparison, this dataset for the new traffic sign needs to be much large. The only image that it wasn't able to recognize well was the 80 kmph, giving a prediction of 60 kmph for it. Given the acute perspective of the image, it isn't too far. 
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model can be seen in the final cells of the  Ipython notebook.
 
-For the first image, the model confuses the 70 km/h speed limit sign with a 30 km/h sign. The top five soft max probabilities were
+For the first image - End of No passing: 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .75         			| 30 km/h   									| 
-| .24     				| 20 km/h										|
-| .01					| 70 km/h										|
-| .00	      			| Keep right					 				|
-| .00				    | 50 km/h		      							|
-
+| 1.00         			| End of No passing						  	| 
+| .00     				| End of all speed and passing limits					|
+| .00					| No passing								|
+| .00	      			| Priority road	 	|
+| .00				    | Go straight or right	|
 
 For the second image - right of way at the next intersection: 
 
@@ -163,37 +168,41 @@ For the second image - right of way at the next intersection:
 | 1.00         			| Right of way at next intersection   			| 
 | .00     				| Beware of ice/snow							|
 | .00					| General caution								|
-| .00	      			| Priority road					 				|
-| .00				    | Pedestrians	      							|
-
-For the third image - No passing: 
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| 1.00         			| No passing						  			| 
-| .00     				| Dangerous curve to the left					|
-| .00					| End of no passing								|
-| .00	      			| Vehicles over 3.5 metric tons prohibited	 	|
-| .00				    | No passing for vehicles over 3.5 metric...	|
+| .00	      			| Double curve					 				|
+| .00				    | Roundabout mandatory	      							|
 
 
-For the fourth image - Children crossing: 
+For the third image - Children crossing: 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Children crossing					  			| 
-| .38     				| Right of way at the next intersection			|
-| .01					| Dangerous curve to the right					|
+| .99         			| Children crossing					  			| 
 | .01	      			| Pedestrians					 				|
-| .00				    | Beware of ice/snow	    					|
+| .00				    | Road narrows on the right	    					|
+| .00					| Dangerous curve to the right					|
+| .00     				| Right of way at the next intersection			|
 
-For the fifth image - Stop: 
+For the fourth image - Stop: 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 1.00         			| Stop								  			| 
-| .38     				| Turn right ahead								|
-| .01					| Keep left										|
-| .01	      			| Turn left ahead				 				|
 | .00				    | No entry	    					|
+| .00     				| Keep right ahead								|
+| .00					| Speed limit (30km/h) left										|
+| .00	      			| Turn right ahead				 				|
+
+For the fifth image, the model confuses the 80 km/h speed limit sign with a 60 km/h sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .93         			| 60 km/h   									| 
+| .03     				| No passing							|
+| .01					| Turn right ahead				|
+| .01	      			| Keep left					 				|
+| .00				    | No vehicles     							|
+
+
+
+
 
