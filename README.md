@@ -53,6 +53,8 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing the distribution of the training and testing data for every class. Numpy's bincount method was used to obtain the frequncy distribution of the data for every class.
 
+<img src="./resources/visualization.png">
+
 ![alt text][image1]
 
 ###Design and Test a Model Architecture
