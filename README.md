@@ -24,7 +24,7 @@ The goals / steps of this project are the following:
 [image3]: ./resources/augmentation.png "Augmentation"
 [image4]: ./resources/augmentedDatasetVisualization.png "Augmented dataset"
 [image5]: ./resources/trafficSignsFromWeb.png "Traffic Signs from web for testing"
-[image6]: ./resources/prdictedTrafficSigns.png "Predictions for the traffic signs"
+[image6]: ./resources/predictedTrafficSigns.png "Predictions for the traffic signs"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
