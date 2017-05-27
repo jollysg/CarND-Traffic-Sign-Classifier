@@ -131,7 +131,8 @@ Following are the five German traffic signs that I found on the web.
 ![alt text][image7] ![alt text][image8] ![alt text][image9] 
 ![alt text][image10] ![alt text][image11]
 
-The challenging images in these are Children crossing (since the sign is partly covered by snow), stop sign (the image is a little blurred) and 80kmph speed limit sign (the image is from an acute perspective)
+The challenging images in these are:  1. Children crossing - The sign is partly covered by snow 2. stop sign - the image is a little blurred as if taken in motion, which may be the case when the car is moving, and 3. 80kmph speed limit sign - the image is from an acute perspective. The remaining two images, right of the way and the end of no passing zone, the network should be able to classify.
+
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
 The images were resized to 32 x 32 in an external image editor, further the unnecessary regions of the images were cropped out. Here are the results of the prediction:
@@ -145,7 +146,7 @@ The images were resized to 32 x 32 in an external image editor, further the unne
 | 80 km/h 	    		| 60 km/h   									| 
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This when compared to the test set accuracy of 93% seems less, however for a true comparison, this dataset for the new traffic sign needs to be much large. The only image that it wasn't able to recognize well was the 80 kmph, giving a prediction of 60 kmph for it. Given the acute perspective of the image, it isn't too far. 
+The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This when compared to the test set accuracy of 93% seems less, however for a true comparison, this dataset for the new traffic sign needs to be much large. The only image that it wasn't able to recognize well was the 80 kmph, giving a prediction of 60 kmph for it. Given the acute perspective of the image, it isn't too far. For correct classification of these kind of images, the training data can be augmented by perspective transformation. 
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
